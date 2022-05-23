@@ -1,0 +1,3371 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head class="at-element-marker">
+  <title>Start storage array configuration database diagnostic</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Start storage array configuration database diagnostic" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/us-en/e-series-cli/commands-a-z/start-storagearray-configdbdiagnostic.html" />
+	<meta property="og:description" content="The start storageArray configDbDiagnostic command runs a consistency check against a configuration database." />
+  <meta property="og:image" content="https://docs.netapp.com/us-en/e-series-cli/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="The start storageArray configDbDiagnostic command runs a consistency check against a configuration database.">
+  <meta name="keywords" content=" start, storage, array, configuration, database, diagnostic"><!-- Icons -->
+  <link rel="icon" href="/us-en/e-series-cli/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Controls AsciiDoctor Admonition Blocks -->
+  <link rel="stylesheet" type="text/css" href="/us-en/e-series-cli/css/font-awesome.min.css">
+
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/us-en/e-series-cli/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel="stylesheet" type="text/css" href="/us-en/e-series-cli/css/netapp.css">
+
+  <!-- WWW CSS Content -->
+  <link rel="stylesheet" type="text/css" href="/us-en/e-series-cli/css/www-luci-dotcom.min.css">
+  <link rel="stylesheet" type="text/css" href="/us-en/e-series-cli/css/www-netapp-dotcom.css">
+  <link rel="stylesheet" href="/us-en/e-series-cli/css/www-netapp-library-critical.min.css" media="all" >
+  <link rel="stylesheet" href="/us-en/e-series-cli/css/www-netapp-library-non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/us-en/e-series-cli/css/www-netapp-library-global-header-footer.min.css">
+
+  <!-- NetApp IE Customizations -->
+  <link rel="stylesheet" href='/us-en/e-series-cli/css/na-utility.css' type='text/css'>
+  <link rel="stylesheet" href='/us-en/e-series-cli/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/e-series-cli/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/e-series-cli/css/custom-dropdown.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/e-series-cli/css/na-pagenav.css' type='text/css'>
+
+  
+  <link rel="stylesheet" href="/us-en/e-series-cli/css/landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/us-en/e-series-cli/css/tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel='stylesheet' href='/us-en/e-series-cli/css/na-feature.css' type='text/css'><!-- Top level site integrations --><script>
+    if (document.location.hostname === "docs.netapp.com") {
+      var head = document.getElementsByTagName('head')[0];
+      var onetrustConsent = document.createElement("script");
+      onetrustConsent.type = "text/javascript";
+      onetrustConsent.src = "https://cdn.cookielaw.org/consent/72570c5c-fe30-465f-b0e0-b77f7fb4ae34/OtAutoBlock.js";
+      head.appendChild(onetrustConsent);
+
+      var onetrustScript = document.createElement("script");
+      onetrustScript.type = "text/javascript";
+      onetrustScript.src = "https://cdn.cookielaw.org/scripttemplates/otSDKStub.js";
+      onetrustScript.charset = "UTF-8";
+      onetrustScript.dataset.documentLanguage = "true";
+      onetrustScript.dataset.domainScript = "72570c5c-fe30-465f-b0e0-b77f7fb4ae34";
+      head.appendChild(onetrustScript);
+    }
+
+    function OptanonWrapper() { }
+
+    if (document.location.hostname === "docs.netapp.com") {
+      var adobe = document.createElement("script");
+      adobe.type = "text/plain";
+      adobe.className = "optanon-category-C0002";
+      adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
+      head.appendChild(adobe);
+
+      var google = document.createElement("script");
+      google.type = "text/plain";
+      google.className = "optanon-category-C0002";
+      google.src = "https://www.googletagmanager.com/gtag/js?id=UA-81697994-3";
+      head.appendChild(google);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-81697994-3');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/us-en/e-series-cli/js/na-search.js'></script><script src='/us-en/e-series-cli/js/na-pagenav.js'></script><link rel='stylesheet' href='/us-en/e-series-cli/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/e-series-cli/css/prism-netapp.css' type='text/css'>
+
+
+  <script src='/us-en/e-series-cli/js/na-utility.js'></script>
+  <script src='/us-en/e-series-cli/js/clouddocs.js'></script>
+  <script src='/us-en/e-series-cli/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/us-en/e-series-cli/js/toc.js'></script>
+  <script src='/us-en/e-series-cli/js/customscripts.js'></script><script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script>
+  <script src='/us-en/e-series-cli/js/custom-dropdown.js'></script>
+  <script src='/us-en/e-series-cli/js/FileSaver.min.js'></script>
+  <script src='/us-en/e-series-cli/js/jszip-utils.min.js'></script>
+  <script src='/us-en/e-series-cli/js/jszip.min.js'></script>
+  <script src='/us-en/e-series-cli/js/pdf-ux.js'></script>
+</head>
+
+
+  <body class role="document" data-flavor="">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  
+  <!-- Start Page Toolbar -->
+  
+  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/e-series-cli/issues/new?body=Page%3A%20[Start storage array configuration database diagnostic](https://docs.netapp.com/us-en/e-series-cli/commands-a-z/start-storagearray-configdbdiagnostic.html)" class="page-nav-contribute-link" role="button"><img src="/us-en/e-series-cli/images/discuss-sm.svg" class="github-icon" />Request doc changes</a><a target="_blank" href="https://github.com/NetAppDocs/e-series-cli/blob/main/commands-a-z/start-storagearray-configdbdiagnostic.adoc" class="page-nav-contribute-link" role="button"><img src="/us-en/e-series-cli/images/edit-sm.svg" class="github-icon" />Edit this page</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/us-en/e-series-cli/images/article-sm.svg" class="github-icon" />Learn how to contribute</a></div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">ON THIS PAGE</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">Product and Solutions</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">Support and Training</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">Community</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">Blog</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">Customer Stories</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/us-en/e-series-cli/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/us-en/e-series-cli/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/us-en/e-series-cli/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/us-en/e-series-cli/search.html"
+          data-type="widget" 
+          data-placeholder="Search Documentation" 
+          data-no-results-found="No results were found for {query}" 
+          data-did-you-mean="Search for {suggestion}." 
+          data-no-results-found-did-you-mean="No results found for {query}. Did you mean {suggestion}?" 
+          data-results-found="{hitCount} results found"  
+          data-sk-es-pf-indexes=""
+          data-flavor=""></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/e-series-cli/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><div id="ie-i18n" class="n-property-bar__lang-selector">
+      <div id="ie-i18n-menu">
+      <span class="ie-i18n-lang">English</span>
+        <button class="ie-i18n-icon-container" type="button">
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/e-series-cli/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+      <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none;">
+        <div class="n-language-selector-menu">
+          <ul class="n-menu__list">
+            <li class="n-menu__list-column">
+              <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/us-en/e-series-cli/commands-a-z/start-storagearray-configdbdiagnostic.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ja-jp/e-series-cli/commands-a-z/start-storagearray-configdbdiagnostic.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ko-kr/e-series-cli/commands-a-z/start-storagearray-configdbdiagnostic.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-cn/e-series-cli/commands-a-z/start-storagearray-configdbdiagnostic.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-tw/e-series-cli/commands-a-z/start-storagearray-configdbdiagnostic.html" class="n-menu__header-text"><span translate="no" class="notranslate">繁體中文</span></a>
+                </li></ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" id="sidebar-height">
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+    <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>Available PDFs<span>
+    </span>
+  </a>
+</div>
+<div class="n-pdf-body-container">
+  <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+        
+        
+        
+        <a target="_blank" href="/us-en/e-series-cli/pdfs/fullsite-sidebar/SANtricity_System_Manager_commands.pdf" >
+          <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>PDF of this doc site</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/e-series-cli/pdfs/sidebar/Get_started.pdf" 
+            
+          >
+            <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+            Get started
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/e-series-cli/pdfs/sidebar/Command_formatting.pdf" 
+            
+          >
+            <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+            Command formatting
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/e-series-cli/pdfs/sidebar/CLI_structure.pdf" 
+            
+          >
+            <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+            CLI structure
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/e-series-cli/pdfs/sidebar/Script_command_structure.pdf" 
+            
+          >
+            <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+            Script command structure
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/e-series-cli/pdfs/sidebar/Format_rules.pdf" 
+            
+          >
+            <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+            Format rules
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/e-series-cli/pdfs/sidebar/Commands_by_category.pdf" 
+            
+          >
+            <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+            Commands by category
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/e-series-cli/pdfs/sidebar/Commands_A_Z.pdf" 
+            
+          >
+            <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+            Commands A-Z
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/e-series-cli/pdfs/sidebar/A.pdf" 
+            
+          >
+            <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+            A
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/e-series-cli/pdfs/sidebar/C.pdf" 
+            
+          >
+            <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+            C
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/e-series-cli/pdfs/sidebar/D.pdf" 
+            
+          >
+            <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+            D
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/e-series-cli/pdfs/sidebar/E.pdf" 
+            
+          >
+            <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+            E
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/e-series-cli/pdfs/sidebar/G.pdf" 
+            
+          >
+            <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+            G
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/e-series-cli/pdfs/sidebar/I.pdf" 
+            
+          >
+            <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+            I
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/e-series-cli/pdfs/sidebar/L.pdf" 
+            
+          >
+            <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+            L
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/e-series-cli/pdfs/sidebar/R.pdf" 
+            
+          >
+            <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+            R
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/e-series-cli/pdfs/sidebar/S.pdf" 
+            
+          >
+            <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+            S
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/e-series-cli/pdfs/sidebar/save____.pdf" 
+            
+          >
+            <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+            save ...
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/e-series-cli/pdfs/sidebar/set____.pdf" 
+            
+          >
+            <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+            set ...
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/e-series-cli/pdfs/sidebar/show____.pdf" 
+            
+          >
+            <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+            show ...
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/e-series-cli/pdfs/sidebar/smcli____.pdf" 
+            
+          >
+            <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+            smcli ...
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/e-series-cli/pdfs/sidebar/start____.pdf" 
+            
+          >
+            <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+            start ...
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
+  <a target="_blank" href="/us-en/e-series-cli/pdfs/pages/commands-a-z/start-storagearray-configdbdiagnostic.pdf" >
+    <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+    PDF of this page
+  </a>
+</li>
+
+</ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/e-series-cli/pdfs/sidebar/stop____.pdf" 
+            
+          >
+            <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+            stop ...
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/e-series-cli/pdfs/sidebar/suspend____.pdf" 
+            
+          >
+            <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+            suspend ...
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/e-series-cli/pdfs/sidebar/V.pdf" 
+            
+          >
+            <img src="/us-en/e-series-cli/images/pdf.png" width="16" height="16"/>
+            V
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+</li></ul>
+  <div class="zip-pdf-link-container" style="display: none;">   
+    <a href="#" id="zipPdf">
+      <img src="/us-en/e-series-cli/images/pdf-zip.png" width="16" height="16"/>
+      <pre>Collection of separate PDF docs<span class="zip-size"></span></pre>
+    </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+</div>
+<script>
+  $("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+  });
+</script><div class="sidebar-nav-container">
+  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/index.html">
+        SANtricity CLI docs
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Get started</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/get-started/changes-in-the-cli-and-script-commands-in-this-release.html">
+        What's new
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Command formatting</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/get-started/overview-format-commands.html">
+        Overview
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> CLI structure</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/get-started/structure-of-a-cli-command.html">
+        Structure of CLI commands
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/get-started/interactive-mode.html">
+        Interactive mode
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/get-started/cli-command-wrapper-syntax.html">
+        CLI wrapper syntax
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/get-started/command-line-parameters.html">
+        CLI parameters
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Script command structure</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/get-started/structure-of-a-script-command.html">
+        Structure of a script command
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/get-started/synopsis-of-the-script-commands.html">
+        Synopsis of script commands
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/get-started/recurring-syntax-elements.html">
+        Recurring syntax elements
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/get-started/naming-conventions.html">
+        Naming conventions
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Format rules</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/get-started/formatting-cli-commands.html">
+        CLI commands
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/get-started/formatting-rules-for-script-commands.html">
+        Script commands
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/get-started/formatting-cli-commands-in-windows-powershell.html">
+        Windows PowerShell
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/get-started/detailed-error-reporting.html">
+        Detailed error reporting
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/get-started/exit-status.html">
+        Exit status
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/get-started/adding-comments-to-a-script-file.html">
+        Add comments to a script file
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/get-started/usage-guidelines.html">
+        Script command guidelines
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/get-started/firmware-compatibility-levels.html">
+        Firmware compatibility levels
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/get-started/new-https-mode.html">
+        SMcli https mode
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/get-started/learn-about-volume-group-migration.html">
+        Volume group migration
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Commands by category</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-category/administrator-commands.html">
+        Administrators commands
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-category/alert-configuration-commands.html">
+        Alert configuration commands
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-category/array-configuration-commands.html">
+        Array configuration commands
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-category/auto-support-commands.html">
+        Auto support commands
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-category/mirroring-commands.html">
+        Mirroring commands
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-category/performance-tuning-commands.html">
+        Performance tuning commands
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-category/replication-commands.html">
+        Replication commands
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-category/security-commands.html">
+        Security commands
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-category/storage-monitor-personal-commands.html">
+        Storage monitor personnel commands
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-category/volume-configuration-commands.html">
+        Volume configuration commands
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Commands A-Z</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> A</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/activate-asynchronous-mirroring.html">
+        activate asynchronous mirroring
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/activate-storagearray-firmware.html">
+        activate storagearray firmware
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/activate-synchronous-mirroring.html">
+        activate synchronous mirroring
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/add-array-label.html">
+        add array label
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/add-certificate-from-array.html">
+        add certificate from array
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/add-certificate-from-file.html">
+        add certificate from file
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/add-drives-to-ssd-cache.html">
+        add drives to ssd cache
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/add-volume-asyncmirrorgroup.html">
+        add volume asyncmirrorgroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/autoconfigure-storagearray-hotspares.html">
+        autoconfigure storagearray hotspares
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/autoconfigure-storagearray.html">
+        autoconfigure storagearray
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> C</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/change-ssd-cache-application-type.html">
+        change ssd cache application type
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/check-asyncmirrorgroup-repositoryconsistency.html">
+        check asyncmirrorgroup repositoryconsistency
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/check-repositoryconsistency.html">
+        check repositoryconsistency
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/check-storagearray-connectivity.html">
+        check storagearray connectivity
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/check-syncmirror.html">
+        check syncmirror
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/check-volume-parity.html">
+        check volume parity
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/clear-alldrivechannels-stats.html">
+        clear alldrivechannels stats
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/clear-asyncmirrorfault.html">
+        clear asyncmirrorfault
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/clear-emailalert-configuration.html">
+        clear emailalert configuration
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/clear-storagearray-configuration.html">
+        clear storagearray configuration
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/clear-storagearray-eventlog.html">
+        clear storagearray eventlog
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/clear-storagearray-firmwarependingarea.html">
+        clear storagearray firmwarependingarea
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/clear-storagearray-recoverymode.html">
+        clear storagearray recoverymode
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/clear-syslog-configuration.html">
+        clear syslog configuration
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/clear-volume-reservations.html">
+        clear volume reservations
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/clear-volume-unreadablesectors.html">
+        clear volume unreadablesectors
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-asyncmirrorgroup.html">
+        create asyncmirrorgroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-cgsnapimage-consistencygroup.html">
+        create cgsnapimage consistencygroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-cgsnapvolume.html">
+        create cgsnapvolume
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-consistencygroup.html">
+        create consistencygroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-diskpool.html">
+        create diskpool
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-host.html">
+        create host
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-hostgroup.html">
+        create hostgroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-hostport.html">
+        create hostport
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-initiator.html">
+        create initiator
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-iscsiinitiator.html">
+        create iscsiinitiator
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-mapping-cgsnapvolume.html">
+        create mapping cgsnapvolume
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-mapping-volume.html">
+        create mapping volume
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-raid-volume-automatic-drive-select.html">
+        create raid volume automatic drive select
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-raid-volume-free-extent-based-select.html">
+        create raid volume free extent based select
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-raid-volume-manual-drive-select.html">
+        create raid volume manual drive select
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-read-only-snapshot-volume.html">
+        create read only snapshot volume
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-snapgroup.html">
+        create snapgroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-snapimage.html">
+        create snapimage
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-snapshot-volume.html">
+        create snapshot volume
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-snmpcommunity.html">
+        create snmpcommunity
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-snmptrapdestination.html">
+        create snmptrapdestination
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-snmpuser-username.html">
+        create snmpuser username
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-ssdcache.html">
+        create ssdcache
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-storagearray-directoryserver.html">
+        create storagearray directoryserver
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-storagearray-securitykey.html">
+        create storagearray securitykey
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-storagearray-syslog.html">
+        create storagearray syslog
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-syncmirror.html">
+        create syncmirror
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-volume-diskpool.html">
+        create volume diskpool
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-volumecopy.html">
+        create volumecopy
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/create-volumegroup.html">
+        create volumegroup
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> D</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/deactivate-storagearray-feature.html">
+        deactivate storagearray feature
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/deactivate-storagearray.html">
+        deactivate storagearray
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-asyncmirrorgroup.html">
+        delete asyncmirrorgroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-auditlog.html">
+        delete auditlog
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-certificates.html">
+        delete certificates
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-cgsnapimage-consistencygroup.html">
+        delete cgsnapimage consistencygroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-consistencygroup.html">
+        delete consistencygroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-controller-cacertificate.html">
+        delete controller cacertificate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-diskpool.html">
+        delete diskpool
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-emailalert.html">
+        delete emailalert
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-host.html">
+        delete host
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-hostgroup.html">
+        delete hostgroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-hostport.html">
+        delete hostport
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-initiator.html">
+        delete initiator
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-iscsiinitiator.html">
+        delete iscsiinitiator
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-sgsnapvolume.html">
+        delete sgsnapvolume
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-snapgroup.html">
+        delete snapgroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-snapimage.html">
+        delete snapimage
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-snapvolume.html">
+        delete snapvolume
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-snmpcommunity.html">
+        delete snmpcommunity
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-snmptrapdestination.html">
+        delete snmptrapdestination
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-snmpuser-username.html">
+        delete snmpuser username
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-ssdcache.html">
+        delete ssdcache
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-storagearray-directoryservers.html">
+        delete storagearray directoryservers
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-storagearray-keymanagementcertificate.html">
+        delete storagearray keymanagementcertificate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-storagearray-loginbanner.html">
+        delete storagearray loginbanner
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-storagearray-syslog.html">
+        delete storagearray syslog
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-storagearray-trustedcertificate.html">
+        delete storagearray trustedcertificate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-syslog.html">
+        delete syslog
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-volume-from-disk-pool.html">
+        delete volume from disk pool
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-volume.html">
+        delete volume
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/delete-volumegroup.html">
+        delete volumegroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/diagnose-asyncmirrorgroup.html">
+        diagnose asyncmirrorgroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/diagnose-controller-iscsihostport.html">
+        diagnose controller iscsihostport
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/diagnose-controller.html">
+        diagnose controller
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/diagnose-syncmirror.html">
+        diagnose syncmirror
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/disable-storagearray-externalkeymanagement-file.html">
+        disable storagearray externalkeymanagement file
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/disable-storagearray.html">
+        disable storagearray
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/download-controller-arraymanagementservercertificate.html">
+        download controller arraymanagementservercertificate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/download-controller-cacertificate.html">
+        download controller cacertificate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/download-controller-trustedcertificate.html">
+        download controller trustedcertificate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/download-drive-firmware.html">
+        download drive firmware
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/download-storagearray-drivefirmware-file.html">
+        download storagearray drivefirmware file
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/download-storagearray-firmware.html">
+        download storagearray firmware
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/download-storagearray-keymanagementcertificate.html">
+        download storagearray keymanagementcertificate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/download-storagearray-nvsram.html">
+        download storagearray nvsram
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/download-tray-configurationsettings.html">
+        download tray configurationsettings
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/download-tray-firmware-file.html">
+        download tray firmware file
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> E</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/enable-controller-datatransfer.html">
+        enable controller datatransfer
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/enable-diskpool-security.html">
+        enable diskpool security
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/enable-or-disable-autosupport-individual-arrays.html">
+        enable or disable autosupport individual arrays
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/enable-storagearray-externalkeymanagement-file.html">
+        enable storagearray externalkeymanagement file
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/enable-storagearray-feature-file.html">
+        enable storagearray feature file
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/enable-volumegroup-security.html">
+        enable volumegroup security
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/establish-asyncmirror-volume.html">
+        establish asyncmirror volume
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/export-storagearray-securitykey.html">
+        export storagearray securitykey
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> G</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/getting-started-with-authentication.html">
+        getting started with authentication
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/getting-started-with-external-key-management.html">
+        getting started with external key management
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/getting-started-with-internal-key-management.html">
+        getting started with internal key management
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> I</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/import-storagearray-securitykey-file.html">
+        import storagearray securitykey file
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> L</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/load-storagearray-dbmdatabase.html">
+        load storagearray dbmdatabase
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> R</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/recopy-volumecopy-target.html">
+        recopy volumecopy target
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/recover-disabled-driveports.html">
+        recover disabled driveports
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/recover-sasport-miswire.html">
+        recover sasport miswire
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/recover-volume.html">
+        recover volume
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/recreate-storagearray-mirrorrepository.html">
+        recreate storagearray mirrorrepository
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/recreate-storagearray-securitykey.html">
+        recreate storagearray securitykey
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/reduce-disk-pool-capacity.html">
+        reduce disk pool capacity
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/remove-array-label.html">
+        remove array label
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/remove-asyncmirrorgroup.html">
+        remove asyncmirrorgroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/remove-drives-from-ssd-cache.html">
+        remove drives from ssd cache
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/remove-lunmapping.html">
+        remove lunmapping
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/remove-member-volume-from-consistency-group.html">
+        remove member volume from consistency group
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/remove-storagearray-directoryserver.html">
+        remove storagearray directoryserver
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/remove-syncmirror.html">
+        remove syncmirror
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/remove-volume-asyncmirrorgroup.html">
+        remove volume asyncmirrorgroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/remove-volumecopy-target.html">
+        remove volumecopy target
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/rename-ssd-cache.html">
+        rename ssd cache
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/repair-data-parity.html">
+        repair data parity
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/repair-volume-parity.html">
+        repair volume parity
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/replace-drive-replacementdrive.html">
+        replace drive replacementdrive
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/reset-controller-arraymanagementsignedcertificate.html">
+        reset controller arraymanagementsignedcertificate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/reset-controller.html">
+        reset controller
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/reset-drive.html">
+        reset drive
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/reset-iscsiipaddress.html">
+        reset iscsiipaddress
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/reset-storagearray-arvmstats-asyncmirrorgroup.html">
+        reset storagearray arvmstats asyncmirrorgroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/reset-storagearray-autosupport-schedule.html">
+        reset storagearray autosupport schedule
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/reset-storagearray-diagnosticdata.html">
+        reset storagearray diagnosticdata
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/reset-storagearray-hostportstatisticsbaseline.html">
+        reset storagearray hostportstatisticsbaseline
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/reset-storagearray-ibstatsbaseline.html">
+        reset storagearray ibstatsbaseline
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/reset-storagearray-iscsistatsbaseline.html">
+        reset storagearray iscsistatsbaseline
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/reset-storagearray-iserstatsbaseline.html">
+        reset storagearray iserstatsbaseline
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/reset-storagearray-rlsbaseline.html">
+        reset storagearray rlsbaseline
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/reset-storagearray-sasphybaseline.html">
+        reset storagearray sasphybaseline
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/reset-storagearray-socbaseline.html">
+        reset storagearray socbaseline
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/reset-storagearray-volumedistribution.html">
+        reset storagearray volumedistribution
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/resume-asyncmirrorgroup.html">
+        resume asyncmirrorgroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/resume-cgsnapvolume.html">
+        resume cgsnapvolume
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/resume-snapimage-rollback.html">
+        resume snapimage rollback
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/resume-snapvolume.html">
+        resume snapvolume
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/resume-ssdcache.html">
+        resume ssdcache
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/resume-syncmirror.html">
+        resume syncmirror
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/revive-drive.html">
+        revive drive
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/revive-snapgroup.html">
+        revive snapgroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/revive-snapvolume.html">
+        revive snapvolume
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/revive-volumegroup.html">
+        revive volumegroup
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> S</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> save ...</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-alldrives-logfile.html">
+        save alldrives logfile
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-alltrays-logfile.html">
+        save alltrays logfile
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-auditlog.html">
+        save auditlog
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-controller-arraymanagementcsr.html">
+        save controller arraymanagementcsr
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-controller-arraymanagementsignedcertificate.html">
+        save controller arraymanagementsignedcertificate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-controller-cacertificate.html">
+        save controller cacertificate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-controller-nvsram-file.html">
+        save controller nvsram file
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-drivechannel-faultdiagnostics-file.html">
+        save drivechannel faultdiagnostics file
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-ioclog.html">
+        save ioclog
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-storage-array-diagnostic-data.html">
+        save storage array diagnostic data
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-storagearray-arvmstats-asyncmirrorgroup.html">
+        save storagearray arvmstats asyncmirrorgroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-storagearray-autoloadbalancestatistics-file.html">
+        save storagearray autoloadbalancestatistics file
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-storagearray-autosupport-log.html">
+        save storagearray autosupport log
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-storagearray-configuration.html">
+        save storagearray configuration
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-storagearray-controllerhealthimage.html">
+        save storagearray controllerhealthimage
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-storagearray-dbmdatabase.html">
+        save storagearray dbmdatabase
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-storagearray-dbmvalidatorinfo.html">
+        save storagearray dbmvalidatorinfo
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-storagearray-firmwareinventory.html">
+        save storagearray firmwareinventory
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-storagearray-hostportstatistics.html">
+        save storagearray hostportstatistics
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-storagearray-ibstats.html">
+        save storagearray ibstats
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-storagearray-iscsistatistics.html">
+        save storagearray iscsistatistics
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-storagearray-iserstatistics.html">
+        save storagearray iserstatistics
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-storagearray-keymanagementcertificate.html">
+        save storagearray keymanagementcertificate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-storagearray-keymanagementclientcsr.html">
+        save storagearray keymanagementclientcsr
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-storagearray-loginbanner.html">
+        save storagearray loginbanner
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-storagearray-performancestats.html">
+        save storagearray performancestats
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-storagearray-rlscounts.html">
+        save storagearray rlscounts
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-storagearray-sasphycounts.html">
+        save storagearray sasphycounts
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-storagearray-soccounts.html">
+        save storagearray soccounts
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-storagearray-statecapture.html">
+        save storagearray statecapture
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-storagearray-supportdata.html">
+        save storagearray supportdata
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-storagearray-trustedcertificate.html">
+        save storagearray trustedcertificate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/save-storagearray-warningevents.html">
+        save storagearray warningevents
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> set ...</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-asyncmirrorgroup.html">
+        set asyncmirrorgroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-auditlog.html">
+        set auditlog
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-autosupport-https-delivery-method-e2800-e5700.html">
+        set autosupport https delivery method e2800 or e5700
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-cgsnapvolume.html">
+        set cgsnapvolume
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-consistency-group-attributes.html">
+        set consistency group attributes
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-consistencygroup-addcgmembervolume.html">
+        set consistencygroup addcgmembervolume
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-controller-dnsservers.html">
+        set controller dnsservers
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-controller-hostport.html">
+        set controller hostport
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-controller-iscsihostport.html">
+        set controller iscsihostport
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-controller-ntpservers.html">
+        set controller ntpservers
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-controller-service-action-allowed-indicator.html">
+        set controller service action allowed indicator
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-controller.html">
+        set controller
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-disk-pool-modify-disk-pool.html">
+        set disk pool modify disk pool
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-disk-pool.html">
+        set disk pool
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-drive-hotspare.html">
+        set drive hotspare
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-drive-nativestate.html">
+        set drive nativestate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-drive-operationalstate.html">
+        set drive operationalstate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-drive-securityid.html">
+        set drive securityid
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-drive-serviceallowedindicator.html">
+        set drive serviceallowedindicator
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-drivechannel.html">
+        set drivechannel
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-email-smtp-delivery-method-e2800-e5700.html">
+        set email smtp delivery method e2800 or e5700
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-emailalert.html">
+        set emailalert
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-event-alert.html">
+        set event alert
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-host.html">
+        set host
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-hostchannel.html">
+        set hostchannel
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-hostgroup.html">
+        set hostgroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-hostport.html">
+        set hostport
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-initiator.html">
+        set initiator
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-iscsiinitiator.html">
+        set iscsiinitiator
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-iscsitarget.html">
+        set iscsitarget
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-isertarget.html">
+        set isertarget
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-session-erroraction.html">
+        set session erroraction
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-snapgroup-enableschedule.html">
+        set snapgroup enableschedule
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-snapgroup-increase-decreaserepositorycapacity.html">
+        set snapgroup increase decreaserepositorycapacity
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-snapgroup-mediascanenabled.html">
+        set snapgroup mediascanenabled
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-snapgroup.html">
+        set snapgroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-snapvolume-converttoreadwrite.html">
+        set snapvolume converttoreadwrite
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-snapvolume-increase-decreaserepositorycapacity.html">
+        set snapvolume increase decreaserepositorycapacity
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-snapvolume-mediascanenabled.html">
+        set snapvolume mediascanenabled
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-snapvolume.html">
+        set snapvolume
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-snmpcommunity.html">
+        set snmpcommunity
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-snmpsystemvariables.html">
+        set snmpsystemvariables
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-snmptrapdestination-trapreceiverip.html">
+        set snmptrapdestination trapreceiverip
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-snmpuser-username.html">
+        set snmpuser username
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-autoloadbalancingenable.html">
+        set storagearray autoloadbalancingenable
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-autosupport-schedule.html">
+        set storagearray autosupport schedule
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-autosupportmaintenancewindow.html">
+        set storagearray autosupportmaintenancewindow
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-autosupportondemand.html">
+        set storagearray autosupportondemand
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-autosupportremotediag.html">
+        set storagearray autosupportremotediag
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-cachemirrordataassurancecheckenable.html">
+        set storagearray cachemirrordataassurancecheckenable
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-controllerhealthimageallowoverwrite.html">
+        set storagearray controllerhealthimageallowoverwrite
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-directoryserver-roles.html">
+        set storagearray directoryserver roles
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-directoryserver.html">
+        set storagearray directoryserver
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-externalkeymanagement.html">
+        set storagearray externalkeymanagement
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-hostconnectivityreporting.html">
+        set storagearray hostconnectivityreporting
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-icmppingresponse.html">
+        set storagearray icmppingresponse
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-isnsipv4configurationmethod.html">
+        set storagearray isnsipv4configurationmethod
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-isnsipv6address.html">
+        set storagearray isnsipv6address
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-isnslisteningport.html">
+        set storagearray isnslisteningport
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-isnsregistration.html">
+        set storagearray isnsregistration
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-isnsserverrefresh.html">
+        set storagearray isnsserverrefresh
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-learncycledate-controller.html">
+        set storagearray learncycledate controller
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-localusername.html">
+        set storagearray localusername
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-loginbanner.html">
+        set storagearray loginbanner
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-managementinterface.html">
+        set storagearray managementinterface
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-odxenabled.html">
+        set storagearray odxenabled
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-passwordlength.html">
+        set storagearray passwordlength
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-pqvalidateonreconstruct.html">
+        set storagearray pqvalidateonreconstruct
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-redundancymode.html">
+        set storagearray redundancymode
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-resourceprovisionedvolumes.html">
+        set storagearray resourceprovisionedvolumes
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-revocationchecksettings.html">
+        set storagearray revocationchecksettings
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-securitykey.html">
+        set storagearray securitykey
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-syslog.html">
+        set storagearray syslog
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-time.html">
+        set storagearray time
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-traypositions.html">
+        set storagearray traypositions
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-unnameddiscoverysession.html">
+        set storagearray unnameddiscoverysession
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-usersession.html">
+        set storagearray usersession
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray-vaaienabled.html">
+        set storagearray vaaienabled
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-storagearray.html">
+        set storagearray
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-syncmirror.html">
+        set syncmirror
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-syslog.html">
+        set syslog
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-target.html">
+        set target
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-thin-volume-attributes.html">
+        set thin volume attributes
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-tray-attribute.html">
+        set tray attribute
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-tray-drawer.html">
+        set tray drawer
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-tray-identification.html">
+        set tray identification
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-tray-serviceallowedindicator.html">
+        set tray serviceallowedindicator
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-volume-group-attributes-for-volume-in-a-volume-group.html">
+        set volume group attributes for volume in a volume group
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-volume-logicalunitnumber.html">
+        set volume logicalunitnumber
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-volume-ssdcacheenabled.html">
+        set volume ssdcacheenabled
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-volumecopy-target.html">
+        set volumecopy target
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-volumegroup-forcedstate.html">
+        set volumegroup forcedstate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-volumegroup.html">
+        set volumegroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/set-volumes.html">
+        set volumes
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> show ...</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-alldrives-downloadprogress.html">
+        show alldrives downloadprogress
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-alldrives-performancestats.html">
+        show alldrives performancestats
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-alldrives.html">
+        show alldrives
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-allhostports.html">
+        show allhostports
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-allsnmpcommunities.html">
+        show allsnmpcommunities
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-allsnmpusers.html">
+        show allsnmpusers
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-array-label.html">
+        show array label
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-asyncmirrorgroup-summary.html">
+        show asyncmirrorgroup summary
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-asyncmirrorgroup-synchronizationprogress.html">
+        show asyncmirrorgroup synchronizationprogress
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-auditlog-configuration.html">
+        show auditlog configuration
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-auditlog-summary.html">
+        show auditlog summary
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-blockedeventalertlist.html">
+        show blockedeventalertlist
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-certificates.html">
+        show certificates
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-cgsnapimage.html">
+        show cgsnapimage
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-consistencygroup.html">
+        show consistencygroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-controller-arraymanagementsignedcertificate-summary.html">
+        show controller arraymanagementsignedcertificate summary
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-controller-cacertificate.html">
+        show controller cacertificate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-controller-diagnostic-status.html">
+        show controller diagnostic status
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-controller-nvsram.html">
+        show controller nvsram
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-controller.html">
+        show controller
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-diskpool.html">
+        show diskpool
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-drivechannel-stats.html">
+        show drivechannel stats
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-emailalert-summary.html">
+        show emailalert summary
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-iscsisessions.html">
+        show iscsisessions
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-replaceabledrives.html">
+        show replaceabledrives
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-snapgroup.html">
+        show snapgroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-snapimage.html">
+        show snapimage
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-snapvolume.html">
+        show snapvolume
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-snmpsystemvariables.html">
+        show snmpsystemvariables
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-ssd-cache-statistics.html">
+        show ssd cache statistics
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-ssd-cache.html">
+        show ssd cache
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-storagearray-autoconfiguration.html">
+        show storagearray autoconfiguration
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-storagearray-autosupport.html">
+        show storagearray autosupport
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-storagearray-cachemirrordataassurancecheckenable.html">
+        show storagearray cachemirrordataassurancecheckenable
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-storagearray-controllerhealthimage.html">
+        show storagearray controllerhealthimage
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-storagearray-dbmdatabase.html">
+        show storagearray dbmdatabase
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-storagearray-directoryservices-summary.html">
+        show storagearray directoryservices summary
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-storagearray-hostconnectivityreporting.html">
+        show storagearray hostconnectivityreporting
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-storagearray-hosttopology.html">
+        show storagearray hosttopology
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-storagearray-iscsinegotiationdefaults.html">
+        show storagearray iscsinegotiationdefaults
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-storagearray-lunmappings.html">
+        show storagearray lunmappings
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-storagearray-odxsetting.html">
+        show storagearray odxsetting
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-storagearray-powerinfo.html">
+        show storagearray powerinfo
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-storagearray-revocationchecksettings.html">
+        show storagearray revocationchecksettings
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-storagearray-syslog.html">
+        show storagearray syslog
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-storagearray-trustedcertificate-summary.html">
+        show storagearray trustedcertificate summary
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-storagearray-unconfiguredinitiators.html">
+        show storagearray unconfiguredinitiators
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-storagearray-unconfigurediscsiinitiators.html">
+        show storagearray unconfigurediscsiinitiators
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-storagearray-unreadablesectors.html">
+        show storagearray unreadablesectors
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-storagearray-usersession.html">
+        show storagearray usersession
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-storagearray.html">
+        show storagearray
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-syncmirror-candidates.html">
+        show syncmirror candidates
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-syncmirror-synchronizationprogress.html">
+        show syncmirror synchronizationprogress
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-syslog-summary.html">
+        show syslog summary
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-textstring.html">
+        show textstring
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-volume-actionprogress.html">
+        show volume actionprogress
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-volume-performancestats.html">
+        show volume performancestats
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-volume-reservations.html">
+        show volume reservations
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-volume-summary.html">
+        show volume summary
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-volume.html">
+        show volume
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-volumecopy-source-targetcandidates.html">
+        show volumecopy source targetcandidates
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-volumecopy-sourcecandidates.html">
+        show volumecopy sourcecandidates
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-volumecopy.html">
+        show volumecopy
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-volumegroup-exportdependencies.html">
+        show volumegroup exportdependencies
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-volumegroup-importdependencies.html">
+        show volumegroup importdependencies
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/show-volumegroup.html">
+        show volumegroup
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> smcli ...</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/smcli-alerttest.html">
+        smcli alerttest
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/smcli-autosupportconfig-show.html">
+        smcli autosupportconfig show
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/smcli-autosupportconfig-test.html">
+        smcli autosupportconfig test
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/smcli-autosupportconfig.html">
+        smcli autosupportconfig
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/smcli-autosupportlog.html">
+        smcli autosupportlog
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/smcli-autosupportschedule-reset.html">
+        smcli autosupportschedule reset
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/smcli-autosupportschedule-show.html">
+        smcli autosupportschedule show
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/smcli-enable-autosupportfeature.html">
+        smcli enable autosupportfeature
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/smcli-enable-disable-autosupportondemand.html">
+        smcli enable disable autosupportondemand
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/smcli-enable-disable-autosupportremotediag.html">
+        smcli enable disable autosupportremotediag
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/smcli-supportbundle-schedule.html">
+        smcli supportbundle schedule
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> start ...</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-asyncmirrorgroup-synchronize.html">
+        start asyncmirrorgroup synchronize
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-cgsnapimage-rollback.html">
+        start cgsnapimage rollback
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-controller-iscsihostport-dhcprefresh.html">
+        start controller iscsihostport dhcprefresh
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-controller.html">
+        start controller
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-diskpool-fullprovisioning.html">
+        start diskpool fullprovisioning
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-diskpool-locate.html">
+        start diskpool locate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-diskpool-resourceprovisioning.html">
+        start diskpool resourceprovisioning
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-drive-erase.html">
+        start drive erase
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-drive-initialize.html">
+        start drive initialize
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-drive-locate.html">
+        start drive locate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-drive-reconstruct.html">
+        start drive reconstruct
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-drivechannel-faultdiagnostics.html">
+        start drivechannel faultdiagnostics
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-drivechannel-locate.html">
+        start drivechannel locate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-emailalert-test.html">
+        start emailalert test
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-increasevolumecapacity-volume.html">
+        start increasevolumecapacity volume
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-ioclog.html">
+        start ioclog
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-secureerase-drive.html">
+        start secureerase drive
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-snapimage-rollback.html">
+        start snapimage rollback
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-snmptrapdestination.html">
+        start snmptrapdestination
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-ssdcache-locate.html">
+        start ssdcache locate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-ssdcache-performancemodeling.html">
+        start ssdcache performancemodeling
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-storagearray-autosupport-deliverytest.html">
+        start storagearray autosupport deliverytest
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-storagearray-autosupport-manualdispatch.html">
+        start storagearray autosupport manualdispatch
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-storagearray-configdbdiagnostic.html">
+        start storagearray configdbdiagnostic
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-storagearray-controllerhealthimage-controller.html">
+        start storagearray controllerhealthimage controller
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-storagearray-directoryservices-test.html">
+        start storagearray directoryservices test
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-storagearray-externalkeymanagement-test.html">
+        start storagearray externalkeymanagement test
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-storagearray-isnsserverrefresh.html">
+        start storagearray isnsserverrefresh
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-storagearray-locate.html">
+        start storagearray locate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-storagearray-ocspresponderurl-test.html">
+        start storagearray ocspresponderurl test
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-storagearray-syslog-test.html">
+        start storagearray syslog test
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-syncmirror-primary-synchronize.html">
+        start syncmirror primary synchronize
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-syslog-test.html">
+        start syslog test
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-tray-locate.html">
+        start tray locate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-volume-initialization.html">
+        start volume initialization
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-volume-initialize.html">
+        start volume initialize
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-volumegroup-defragment.html">
+        start volumegroup defragment
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-volumegroup-export.html">
+        start volumegroup export
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-volumegroup-fullprovisioning.html">
+        start volumegroup fullprovisioning
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-volumegroup-import.html">
+        start volumegroup import
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-volumegroup-locate.html">
+        start volumegroup locate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/start-volumegroup-resourceprovisioning.html">
+        start volumegroup resourceprovisioning
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> stop ...</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/stop-asyncmirrorgroup-rolechange.html">
+        stop asyncmirrorgroup rolechange
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/stop-cgsnapimage-rollback.html">
+        stop cgsnapimage rollback
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/stop-cgsnapvolume.html">
+        stop cgsnapvolume
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/stop-consistencygroup-pendingsnapimagecreation.html">
+        stop consistencygroup pendingsnapimagecreation
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/stop-diskpool-locate.html">
+        stop diskpool locate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/stop-drive-locate.html">
+        stop drive locate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/stop-drive-replace.html">
+        stop drive replace
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/stop-drivechannel-faultdiagnostics.html">
+        stop drivechannel faultdiagnostics
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/stop-drivechannel-locate.html">
+        stop drivechannel locate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/stop-pendingsnapimagecreation.html">
+        stop pendingsnapimagecreation
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/stop-snapimage-rollback.html">
+        stop snapimage rollback
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/stop-snapvolume.html">
+        stop snapvolume
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/stop-ssdcache-locate.html">
+        stop ssdcache locate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/stop-ssdcache-performancemodeling.html">
+        stop ssdcache performancemodeling
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/stop-storagearray-configdbdiagnostic.html">
+        stop storagearray configdbdiagnostic
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/stop-storagearray-drivefirmwaredownload.html">
+        stop storagearray drivefirmwaredownload
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/stop-storagearray-iscsisession.html">
+        stop storagearray iscsisession
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/stop-storagearray-locate.html">
+        stop storagearray locate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/stop-tray-locate.html">
+        stop tray locate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/stop-volumecopy-target-source.html">
+        stop volumecopy target source
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/stop-volumegroup-locate.html">
+        stop volumegroup locate
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> suspend ...</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/suspend-asyncmirrorgroup.html">
+        suspend asyncmirrorgroup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/suspend-ssdcache.html">
+        suspend ssdcache
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/suspend-syncmirror-primaries.html">
+        suspend syncmirror primaries
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> V</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/commands-a-z/validate-storagearray-securitykey.html">
+        validate storagearray securitykey
+      </a></li></ul></li></ul></li><li class=" "><a class="na-navbar-padding" href="/us-en/e-series-cli/legal-notices.html">
+        Legal notices
+      </a></li></ul>
+</div>
+<script>
+  window.onscroll = () => {
+    const value = -40 - (document.body.scrollHeight - (window.innerHeight + document.scrollingElement.scrollTop));
+    
+    document.getElementById("sidebar-height").style.bottom = Math.max(0,value) + "px";
+};
+</script>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content">
+      <div class="ie-utility">
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">docs.netapp.com</a>
+        </li>
+        
+
+        
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com/us-en/e-series-family/">E-Series</a>
+        </li>
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/us-en/e-series-cli/">SANtricity&nbsp;commands</a>
+        </li>
+
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+      <div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">Start storage array configuration database diagnostic</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2022-04-25 18:31:02 +0000">04/25/2022</time>
+    
+  
+
+<span>Contributors
+  <a target="_blank" class="ext-link-indicator" href="https://github.com/netapp-driley">
+    <img  class="avatar avatar-small"
+          alt="netapp-driley"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/18422994?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
+</span>
+
+
+</p>
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>The <code>start storageArray configDbDiagnostic</code> command runs a consistency check against a configuration database.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="supported-arrays">Supported Arrays</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This command applies to any individual storage array, including the E2700, E5600, E2800, E5700, EF600 and EF300 arrays, as long as all SMcli packages are installed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="roles">Roles</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To execute this command on an E2800, E5700, EF600, or EF300 storage array, you must have the Storage Admin role.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="syntax">Syntax</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre>start storageArray configDbDiagnostic
+[sourceLocation=(disk | onboard) |
+diagnosticType=(fileSystem | mirror) |
+controller[(a|b)]]</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="parameters">Parameters</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>sourceLocation</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>This parameter specifies the location of the database.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>disk</code> indicates that data comes directly from the database on the drive</p>
+</li>
+<li>
+<p><code>onboard</code> indicates that data comes from the RPA memory location</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The default location is <code>disk</code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>diagnosticType</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The level of diagnostic testing that you want to run on the database. You can run one of these levels of testing:</p>
+</div>
+<div class="paragraph">
+<p><code>fileSystem</code>&#8201;&#8212;&#8201;This option checks the structural integrity of the database.</p>
+</div>
+<div class="paragraph">
+<p><code>mirror</code>&#8201;&#8212;&#8201;The tests run using this option vary according to the value of the <code>sourceLocation</code> parameter:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When the <code><strong>sourceLocation</strong></code> parameter is set to <code>disk</code>, the peer controller initiates a block check.</p>
+</li>
+<li>
+<p>When the <code><strong>sourceLocation</strong></code> parameter is set to <code>onboard</code> , the peer controller initiates a record check.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/e-series-cli/images/note.svg" alt="Note">
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You can run the <code>mirror</code> option only from a command line or from the Script editor. This option is not available through the storage management software GUI. The <code>mirror</code> option starts a long running operation that you cannot stop.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The default value is <code>fileSystem</code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>controller</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The controller that has the database on which you want to run the diagnostic tests. Valid controller identifiers are <code>a</code> or <code>b</code>, where <code>a</code> is the controller in slot A, and <code>b</code> is the controller in slot B. Enclose the controller identifier in square brackets ([ ]).</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="notes">Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This command runs a consistency check against a configuration database. All database records are checked. Error data is written to a file in the data folder on disk automatically. You do not need to specify an output file.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/e-series-cli/images/note.svg" alt="Note">
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Running a consistency check with the <code>diagnosticType</code> parameter set to <code>mirror</code> and with the <code>sourceLocation</code> parameter set to <code>onboard</code> can cause the operation to run for a long time. This can have adverse effects on host I/O processing. This operation should be done only under direction from the support organization.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Upon completion of the diagnostic test, the controller firmware returns one of these results:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Diagnosis completed without errors. No ZIP file created.</code></p>
+</li>
+<li>
+<p><code>Diagnosis completed with errors. Refer to the ZIP file created at:</code></p>
+<div class="paragraph">
+<p><code>...\Install_dir\data\FirmwareUpgradeReports\timestamp_buildNo.zip</code></p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If the diagnostic test detects an inconsistency in the configuration database, the controller firmware performs these actions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Returns a description of the inconsistency</p>
+</li>
+<li>
+<p>Saves a ZIP file containing raw binary data</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The controller firmware saves the ZIP file to this location:</p>
+</div>
+<div class="paragraph">
+<p><code>...\Install_dir\data\FirmwareUpgradeReports\timestamp_buildNo.zip</code></p>
+</div>
+<div class="paragraph">
+<p>You can use the binary data to help determine the cause of the problem, or you can send the file containing the binary data to technical support.</p>
+</div>
+<div class="paragraph">
+<p>To stop the database configuration diagnostic test, use the <code>stop storageArray configDbDiagnostic</code> command.</p>
+</div>
+<div class="paragraph">
+<p>In addition, you can start the database configuration diagnostic test through the storage management software GUI; however, you cannot stop the database configuration diagnostic test through the storage management software GUI. If you want to stop a running diagnostic test, you must use the <code>stop storageArray configDbDiagnostic</code> command.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="minimum-firmware-level">Minimum firmware level</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>7.75</p>
+</div>
+<div class="paragraph">
+<p>7.83 adds these parameters:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>sourceLocation</code></p>
+</li>
+<li>
+<p><code>diagnosticType</code></p>
+</li>
+<li>
+<p><code>controller</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">Terms of Use</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">Privacy Policy</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">Cookie Policy</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">Cookie Settings</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="n-footer__bottom-right">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <span class="n-footer__fine-print">Have feedback for our website?</span>
+              <a target="_self" href="javascript:netapp_mailto()">Let us know</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://docs.netapp.com/us-en/announcements/">Announcements</a>
+            </li>
+          </ul>
+        </div>
+        <div class="n-footer__social-links">
+          <ul class="n-footer__social-link-list">
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com"
+                target="_blank" title="blog" alt="blog">
+                <span class="n-footer__social-link-text">blog</span>
+                <svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+                  <title>blog@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/us-en/e-series-cli/common/svg/sprite.svg#blog"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/"
+                target="_blank" title="community" alt="community">
+                <span class="n-footer__social-link-text">community</span>
+                <svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+                  <title>community@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/us-en/e-series-cli/common/svg/sprite.svg#comments"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp"
+                target="_blank" title="twitter" alt="twitter">
+                <span class="n-footer__social-link-text">twitter</span>
+                <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                  <title>twitter@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/us-en/e-series-cli/common/svg/sprite.svg#twitter"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp"
+                target="_blank" title="facebook" alt="facebook">
+                <span class="n-footer__social-link-text">facebook</span>
+                <svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+                  <title>facebook@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/us-en/e-series-cli/common/svg/sprite.svg#facebook"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-linkedin"
+                href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+                <span class="n-footer__social-link-text">linkedin</span>
+                <svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+                  <title>linkedin@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/us-en/e-series-cli/common/svg/sprite.svg#linkedin"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-youtube"
+                href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+                <span class="n-footer__social-link-text">youtube</span>
+                <svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+                  <title>youtube@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/us-en/e-series-cli/common/svg/sprite.svg#youtube"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-slideshare"
+                href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+                <span class="n-footer__social-link-text">slideshare</span>
+                <svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+                  <title>slideshare@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/us-en/e-series-cli/common/svg/sprite.svg#slideshare"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/us-en/e-series-cli/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/us-en/e-series-cli/js/prism.js'></script>
+      <script type="text/javascript" src='/us-en/e-series-cli/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/us-en/e-series-cli/js/www-ntap.js'></script>
+    <script src='/us-en/e-series-cli/js/tabbed-blocks.js'></script>
+  </body></html>

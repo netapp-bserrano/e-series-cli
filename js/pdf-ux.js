@@ -1,9 +1,16 @@
 $(document).ready(function () {
   try {
     // intialize config variables
-    let zipLevel = "";
-    let baseUrlSection = "/us-en/e-series-cli/pdfs/sidebar/";
-    let zipFilename = "";
+    let zipLevel = "1";
+
+    let baseUrlSection = "/us-en/e-series-cli/pdfs/";
+    const flavor = $("body").data("flavor");
+    if (flavor) {
+      baseUrlSection += flavor + "/";
+    }
+    baseUrlSection += "sidebar/";
+
+    let zipFilename = "santricity-commands.zip";
     let zipFileSize = 0;
     zipLevel = zipLevel !== ""?zipLevel:1;
     zipFilename = zipFilename !== ''?zipFilename:"e-series-cli.zip";
