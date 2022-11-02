@@ -125,13 +125,6 @@
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/us-en/e-series-cli/get-started/changes-in-the-cli-and-script-commands-in-this-release.html</loc>
-      
-      <lastmod>2022-05-17T18:00:42+00:00</lastmod>
-      
-    </url>
-  
-    <url>
       <loc>https://docs.netapp.com/us-en/e-series-cli/commands-a-z/check-asyncmirrorgroup-repositoryconsistency.html</loc>
       
       <lastmod>2022-03-14T15:12:43+00:00</lastmod>
@@ -190,7 +183,7 @@
     <url>
       <loc>https://docs.netapp.com/us-en/e-series-cli/commands-a-z/clear-storagearray-configuration.html</loc>
       
-      <lastmod>2022-03-14T15:12:43+00:00</lastmod>
+      <lastmod>2022-08-12T16:30:40+00:00</lastmod>
       
     </url>
   
@@ -253,7 +246,7 @@
     <url>
       <loc>https://docs.netapp.com/us-en/e-series-cli/get-started/command-line-parameters.html</loc>
       
-      <lastmod>2022-03-09T11:50:23+00:00</lastmod>
+      <lastmod>2022-08-19T18:48:05+00:00</lastmod>
       
     </url>
   
@@ -344,21 +337,21 @@
     <url>
       <loc>https://docs.netapp.com/us-en/e-series-cli/commands-a-z/create-raid-volume-automatic-drive-select.html</loc>
       
-      <lastmod>2022-04-22T15:30:52+00:00</lastmod>
+      <lastmod>2022-09-16T14:49:24+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/us-en/e-series-cli/commands-a-z/create-raid-volume-free-extent-based-select.html</loc>
       
-      <lastmod>2022-03-16T06:34:44+00:00</lastmod>
+      <lastmod>2022-09-16T14:49:24+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/us-en/e-series-cli/commands-a-z/create-raid-volume-manual-drive-select.html</loc>
       
-      <lastmod>2022-04-22T15:30:52+00:00</lastmod>
+      <lastmod>2022-09-16T14:49:24+00:00</lastmod>
       
     </url>
   
@@ -449,7 +442,7 @@
     <url>
       <loc>https://docs.netapp.com/us-en/e-series-cli/commands-a-z/create-volume-diskpool.html</loc>
       
-      <lastmod>2022-05-09T13:22:28+00:00</lastmod>
+      <lastmod>2022-09-23T14:09:44+00:00</lastmod>
       
     </url>
   
@@ -811,6 +804,13 @@
     </url>
   
     <url>
+      <loc>https://docs.netapp.com/us-en/e-series-cli/get-started/downloadable-smcli-parameters.html</loc>
+      
+      <lastmod>2022-10-10T22:05:03+00:00</lastmod>
+      
+    </url>
+  
+    <url>
       <loc>https://docs.netapp.com/us-en/e-series-cli/commands-category/e2700-and-e5600-commands.html</loc>
       
       <lastmod>2022-03-10T10:59:25+00:00</lastmod>
@@ -967,7 +967,7 @@
     <url>
       <loc>https://docs.netapp.com/us-en/e-series-cli/legal-notices.html</loc>
       
-      <lastmod>2022-02-28T18:00:31+00:00</lastmod>
+      <lastmod>2022-06-07T19:41:36+00:00</lastmod>
       
     </url>
   
@@ -1576,7 +1576,7 @@
     <url>
       <loc>https://docs.netapp.com/us-en/e-series-cli//search.html</loc>
       
-      <lastmod>2022-07-19T11:41:47+00:00</lastmod>
+      <lastmod>2022-11-02T21:29:56+00:00</lastmod>
       
     </url>
   
@@ -2374,7 +2374,7 @@
     <url>
       <loc>https://docs.netapp.com/us-en/e-series-cli/commands-a-z/show-controller-nvsram.html</loc>
       
-      <lastmod>2022-04-25T18:31:02+00:00</lastmod>
+      <lastmod>2022-08-12T16:30:40+00:00</lastmod>
       
     </url>
   
@@ -2598,7 +2598,7 @@
     <url>
       <loc>https://docs.netapp.com/us-en/e-series-cli/commands-a-z/show-storagearray.html</loc>
       
-      <lastmod>2022-04-25T18:31:02+00:00</lastmod>
+      <lastmod>2022-08-12T16:30:40+00:00</lastmod>
       
     </url>
   
@@ -3292,6 +3292,13 @@
       <loc>https://docs.netapp.com/us-en/e-series-cli/commands-category/volume-configuration-commands.html</loc>
       
       <lastmod>2022-05-25T20:50:20+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/e-series-cli/whats-new.html</loc>
+      
+      <lastmod>2022-10-10T22:05:03+00:00</lastmod>
       
     </url>
   
